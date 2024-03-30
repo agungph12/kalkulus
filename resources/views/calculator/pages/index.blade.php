@@ -1,12 +1,12 @@
 @extends('calculator.layouts.app')
 
 @section('title')
-    Kalkulator
+    Kalkulus Kalkulator
 @endsection
 
 @section('_konten_')
     <div class="container my-5">
-        <h2 class="mb-4">Kalkulus Kalkulator</h2>
+        <h2 class="mb-4">@yield('title')</h2>
         <form id="calcForm">
             @csrf
             <div class="mb-3">
@@ -56,36 +56,43 @@
                 formData.append('type', calculationType);
                 formData.append('_token', '{{ csrf_token() }}');
 
+                function simulateTyping(text, elementId, speed = 50) {
+                    let i = 0;
+                    const interval = setInterval(() => {
+                        if (i < text.length) {
+                            if (text.charAt(i) === '\n') {
+                                document.getElementById(elementId).innerHTML += '<br>';
+                            } else {
+                                document.getElementById(elementId).innerHTML += text.charAt(i);
+                            }
+                            i++;
+                        } else {
+                            clearInterval(interval);
+                        }
+                    }, speed);
+                }
+
                 fetch('{{ route('store') }}', {
                         method: 'POST',
                         body: formData,
                     })
                     .then(response => response.json())
                     .then(data => {
-                        let resultContent = `<h5>${data.type} Equation Solution</h5>`;
-                        resultContent += `<p>${data.result}</p>`;
-
                         const resultDiv = document.getElementById('result');
-                        resultDiv.innerHTML = resultContent;
+                        resultDiv.innerHTML = '';
                         resultDiv.style.display = 'block';
+                        document.getElementById('spinner').classList.add('d-none');
+                        document.getElementById('calculateBtn').disabled = false;
 
-                        resultDiv.style.opacity = 0;
-                        let op = 0.1;
-                        const timer = setInterval(() => {
-                            if (op >= 1) {
-                                clearInterval(timer);
-                            }
-                            resultDiv.style.opacity = op;
-                            resultDiv.style.filter = 'alpha(opacity=' + op * 100 + ")";
-                            op += op * 0.1;
-                        }, 10);
+                        let cleanResult = data.result.replace(/<br>/g, "\n");
+                        simulateTyping(cleanResult, 'result', 50);
                     })
                     .catch(error => console.error('Error:', error))
                     .finally(() => {
                         document.getElementById('spinner').classList.add('d-none');
                         document.getElementById('calculateBtn').disabled = false;
                     });
-            }, 5000);
+            }, 3000);
         });
     </script>
 @endpush

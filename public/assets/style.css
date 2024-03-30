@@ -42,6 +42,8 @@ h2 {
     padding: 15px;
     margin-top: 20px;
     display: none;
+    animation: fadeIn 2s;
+    white-space: pre-wrap;
 }
 
 @media (max-width: 768px) {
@@ -65,10 +67,6 @@ h2 {
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
-}
-
-#result {
-    animation: fadeIn 2s;
 }
 
 .form-control, .form-select {
