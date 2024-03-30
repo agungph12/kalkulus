@@ -1,52 +1,84 @@
-/* Custom CSS untuk Kalkulator Calculus */
 body, html {
     height: 100%;
     margin: 0;
-    font-family: 'Nunito', sans-serif; /* Font modern dan elegan */
+    font-family: 'Nunito', sans-serif;
 }
 
 .container {
-    max-width: 600px; /* Lebar maksimal untuk container agar tidak terlalu lebar di layar besar */
+    max-width: 600px;
 }
 
 h2 {
-    color: #343a40; /* Warna gelap untuk judul, sesuai dengan tema Bootstrap */
-    text-align: center; /* Judul di tengah */
-    margin-bottom: 1rem; /* Spasi dibawah judul */
+    color: #343a40;
+    text-align: center;
+    margin-bottom: 1rem;
 }
 
 .form-label {
-    font-weight: bold; /* Membuat label lebih tebal */
+    font-weight: bold;
 }
 
 #calcForm {
-    background-color: #f8f9fa; /* Warna background form */
-    border-radius: 8px; /* Rounded corners untuk form */
-    padding: 20px; /* Padding di dalam form */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Memberikan sedikit bayangan pada form */
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 .form-control, .form-select {
-    margin-bottom: 1rem; /* Menambahkan spasi di bawah setiap input dan select */
+    margin-bottom: 1rem;
 }
 
 .btn-primary {
-    width: 100%; /* Membuat tombol calculate berukuran penuh */
-    padding: 10px; /* Padding tambahan untuk tombol */
-    font-size: 1rem; /* Ukuran font untuk tombol */
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
 }
 
 #result {
-    background-color: #ffffff; /* Warna background untuk hasil */
-    border: 1px solid #ced4da; /* Border untuk hasil */
-    border-radius: 5px; /* Rounded corners untuk hasil */
-    padding: 15px; /* Padding di dalam box hasil */
-    margin-top: 20px; /* Margin atas untuk box hasil */
-    display: none; /* Sembunyikan dulu box hasil sampai ada hasil yang ditampilkan */
+    background-color: #ffffff;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    padding: 15px;
+    margin-top: 20px;
+    display: none;
 }
 
 @media (max-width: 768px) {
     .container {
-        padding: 15px; /* Padding lebih kecil untuk layar kecil */
+        padding: 15px;
     }
+}
+
+#result h5 {
+    color: #4a4a4a;
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+#result p {
+    font-size: 1.2rem;
+    color: #333;
+    text-align: center;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+#result {
+    animation: fadeIn 2s;
+}
+
+.form-control, .form-select {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border: 1px solid #ced4da;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
 }

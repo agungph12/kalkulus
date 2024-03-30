@@ -62,8 +62,23 @@
                     })
                     .then(response => response.json())
                     .then(data => {
-                        document.getElementById('result').innerHTML = data.result;
-                        document.getElementById('result').style.display = 'block';
+                        let resultContent = `<h5>${data.type} Equation Solution</h5>`;
+                        resultContent += `<p>${data.result}</p>`;
+
+                        const resultDiv = document.getElementById('result');
+                        resultDiv.innerHTML = resultContent;
+                        resultDiv.style.display = 'block';
+
+                        resultDiv.style.opacity = 0;
+                        let op = 0.1;
+                        const timer = setInterval(() => {
+                            if (op >= 1) {
+                                clearInterval(timer);
+                            }
+                            resultDiv.style.opacity = op;
+                            resultDiv.style.filter = 'alpha(opacity=' + op * 100 + ")";
+                            op += op * 0.1;
+                        }, 10);
                     })
                     .catch(error => console.error('Error:', error))
                     .finally(() => {

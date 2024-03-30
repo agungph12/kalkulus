@@ -61,7 +61,11 @@ class CalculatorController extends Controller
             'result' => $result,
         ]);
 
-        return response()->json(['result' => $result, 'calculation_id' => $calculation->id]);
+        return response()->json([
+            'type' => count($coefficients) == 2 ? 'Linear' : 'Quadratic',
+            'result' => $result,
+            'calculation_id' => $calculation->id
+        ]);
     }
 
     /**
