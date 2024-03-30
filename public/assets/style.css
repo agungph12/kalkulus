@@ -1,0 +1,52 @@
+/* Custom CSS untuk Kalkulator Calculus */
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: 'Nunito', sans-serif; /* Font modern dan elegan */
+}
+
+.container {
+    max-width: 600px; /* Lebar maksimal untuk container agar tidak terlalu lebar di layar besar */
+}
+
+h2 {
+    color: #343a40; /* Warna gelap untuk judul, sesuai dengan tema Bootstrap */
+    text-align: center; /* Judul di tengah */
+    margin-bottom: 1rem; /* Spasi dibawah judul */
+}
+
+.form-label {
+    font-weight: bold; /* Membuat label lebih tebal */
+}
+
+#calcForm {
+    background-color: #f8f9fa; /* Warna background form */
+    border-radius: 8px; /* Rounded corners untuk form */
+    padding: 20px; /* Padding di dalam form */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Memberikan sedikit bayangan pada form */
+}
+
+.form-control, .form-select {
+    margin-bottom: 1rem; /* Menambahkan spasi di bawah setiap input dan select */
+}
+
+.btn-primary {
+    width: 100%; /* Membuat tombol calculate berukuran penuh */
+    padding: 10px; /* Padding tambahan untuk tombol */
+    font-size: 1rem; /* Ukuran font untuk tombol */
+}
+
+#result {
+    background-color: #ffffff; /* Warna background untuk hasil */
+    border: 1px solid #ced4da; /* Border untuk hasil */
+    border-radius: 5px; /* Rounded corners untuk hasil */
+    padding: 15px; /* Padding di dalam box hasil */
+    margin-top: 20px; /* Margin atas untuk box hasil */
+    display: none; /* Sembunyikan dulu box hasil sampai ada hasil yang ditampilkan */
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 15px; /* Padding lebih kecil untuk layar kecil */
+    }
+}
