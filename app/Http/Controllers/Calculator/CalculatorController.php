@@ -14,7 +14,12 @@ class CalculatorController extends Controller
      */
     public function index()
     {
-        return view('calculator.pages.index');
+        $query = Menghitung::orderBy('created_at');
+        $menghitung = $query->paginate(12);
+
+        return view('frontend.pages.kalkulus.index', [
+            'menghitung' => $menghitung
+        ]);
     }
 
     /**

@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 
-@include('calculator.includes._head')
+@include('frontend.includes._head')
 
 <body>
 
     @yield('_konten_')
 
-    @include('calculator.includes._script')
+    @include('frontend.includes._script')
 
 </body>
 
