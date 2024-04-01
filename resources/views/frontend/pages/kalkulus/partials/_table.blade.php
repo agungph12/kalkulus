@@ -9,7 +9,7 @@
             </tr>
         </thead>
         <tbody>
-            @forelse ($menghitung as $item)
+            @forelse ($menghitung as $index => $item)
                 <tr>
                     <td>
                         {{ ($menghitung->currentPage() - 1) * $menghitung->perPage() + $loop->iteration }}
@@ -33,4 +33,5 @@
             @endforelse
         </tbody>
     </table>
+    {{ $menghitung->links('pagination::bootstrap-5') }}
 </div>

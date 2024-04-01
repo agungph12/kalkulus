@@ -15,7 +15,7 @@ class CalculatorController extends Controller
     public function index()
     {
         $query = Menghitung::orderBy('created_at');
-        $menghitung = $query->paginate(12);
+        $menghitung = $query->paginate(5);
 
         return view('frontend.pages.kalkulus.index', [
             'menghitung' => $menghitung
